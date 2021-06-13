@@ -20,7 +20,11 @@ public class Controller {
         }
 
         System.out.println("-------");
-        this.PrintTotal();
+    }
+
+    public void PrintRecap(){
+        for (Month m: this.months)
+            System.out.println(m.toString());
     }
 
     public void PrintTotal(){
@@ -33,6 +37,6 @@ public class Controller {
             price += m.TotalPrice();
         }
 
-        System.out.println("TOTAL : " + price + " CHF ["+ kwh + " kwh]");
+        System.out.println("TOTAL : " + price + " CHF ["+ kwh + " kwh] / " + Math.round(kwh/77) + " cycles de charges complètes");
     }
 }

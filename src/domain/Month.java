@@ -25,7 +25,7 @@ public class Month {
     }
 
     public String toString(){
-        return this.month + " / " + this.year + " [" + this.charges.size() + "] --> " + this.TotalKwh() + " KWH | " + this.TotalPrice() + " CHF" ;
+        return this.month + " / " + this.year + " [" + this.charges.size() + " charges] ==> " + this.TotalKwh() + " KWH pour " + this.TotalPrice() + " CHF" ;
     }
 
     public float TotalPrice(){
@@ -55,7 +55,6 @@ public class Month {
         for (Charge charge:
              this.charges) {
             str += charge.toString() + "\n";
-            //System.out.println(charge);
         }
         return str;
     }
