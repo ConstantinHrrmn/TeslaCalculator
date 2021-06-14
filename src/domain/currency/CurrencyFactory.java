@@ -7,9 +7,9 @@ public class CurrencyFactory {
 
         switch (name){
             case "CH" : return new CHF(1f);
-            case "FR" : return new EUROS(1.09f);
+            //case "FR" : return new EUROS(1.09f);
+            default: return new EUROS(1.09f);
         }
 
-        return null;
     }
 }

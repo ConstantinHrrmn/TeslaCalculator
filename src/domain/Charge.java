@@ -39,7 +39,7 @@ public class Charge {
                 this.place  +
                 ", " +
                 this.country +
-                "] --> " +
+                " ] --> " +
                 this.kwh +
                 " kwh | "+
                 this.PrintPrice();
