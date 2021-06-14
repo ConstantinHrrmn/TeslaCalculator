@@ -1,32 +1,30 @@
 package domain;
 
 public class Charge {
-    private String start;
+
+    private String startDate;
+    private String startHour;
     private String country;
     private String place;
     private float kwh;
-    private float price;
-    private boolean CHF;
 
-    public Charge(String a_start, String a_country, String a_place, float a_kwh, float a_price, boolean a_CHF){
-        this.start = a_start;
+    private StrategiePrix strategie;
+
+    public Charge(String a_startDate, String a_startHour, String a_country, String a_place, float a_kwh, StrategiePrix strategy){
+        this.startDate = a_startDate;
+        this.startHour = a_startHour;
         this.country = a_country;
         this.place = a_place;
         this.kwh = a_kwh;
-        this.price = a_price;
-        this.CHF = a_CHF;
+        this.strategie = strategy;
     }
 
     public float getPrice(){
-        return this.CHF ? this.price : Math.round((this.price * 1.09f) * 100.0f) / 100.0f;
+        return this.strategie.CalculPrix();
     }
 
     public String PrintPrice(){
-        if (this.CHF){
-             return this.price + " CHF";
-        }else{
-            return "["+this.price+" Euros] => " + this.getPrice() + " CHF";
-        }
+        return this.strategie.PrintPrix();
     }
 
     public float getKwh(){
@@ -34,8 +32,10 @@ public class Charge {
     }
 
     public String toString(){
-        return this.start +
-                " [" +
+        return this.startDate +
+                " (" +
+                this.startHour +
+                ") [" +
                 this.place  +
                 ", " +
                 this.country +

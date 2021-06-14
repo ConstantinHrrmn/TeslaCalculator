@@ -2,6 +2,8 @@ package bdd;
 
 import domain.Charge;
 import domain.Month;
+import domain.StrategiePrix;
+import domain.currency.CurrencyFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,10 @@ public class DataReader {
                 if (data[7].contains("CHARGING")){
 
                     // On récupère la date et l'heure du début de la charge
-                    String start = data[0];
+                    String[] start = data[0].split("T");
+
+                    String startDate = start[0];
+                    String startHour = start[1].split("\\+")[0];
 
                     // On récupère le pays
                     String country = data[5].split("\"")[1];
@@ -59,8 +64,11 @@ public class DataReader {
                     // On vérifie si c'est en CHF ou en EUROS
                     boolean CHF = data[4].equals("CH");
 
+                    StrategiePrix strategie = CurrencyFactory.CreateCurrency(data[4]);
+                    strategie.setPrix(price);
+
                     // Ajout de la charge dans les charges du mois
-                    m.AddCharge(new Charge(start, country, place, kwh, price, CHF));
+                    m.AddCharge(new Charge(startDate, startHour, country, place, kwh, strategie));
                 }
             }
             // Ajout du mois dans la liste des mois

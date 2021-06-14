@@ -36,7 +36,7 @@ public class Month {
             i += charge.getPrice();
         }
 
-        return i;
+        return (i * 100.0f) / 100.0f;
     }
 
     public float TotalKwh(){
