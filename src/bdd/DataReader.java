@@ -16,6 +16,10 @@ public class DataReader {
         fichiers.add("03.2021.csv");
         fichiers.add("04.2021.csv");
         fichiers.add("05.2021.csv");
+        fichiers.add("06.2021.csv");
+        fichiers.add("07.2021.csv");
+        fichiers.add("08.2021.csv");
+        fichiers.add("09.2021.csv");
     }
 
     public static List<Month> LoadMonths(){
